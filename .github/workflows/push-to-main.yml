@@ -1,0 +1,55 @@
+name: Push to main
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+          
+      - name: Install npm:7
+        run: |
+          npm i -g npm@7
+
+      - name: npm install
+        run: |
+          export GENERATE_SOURCEMAP=false
+          npm install
+
+      - name: lint
+        run: |
+          unset CI
+          npm run lint:fix
+
+      - name: build
+        run: |
+          unset CI
+          npm run build
+
+        # - name: test
+        #   run: npm run test
+
+        env:
+          REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
+          REACT_APP_FIREBASE_API_KEY: ${{secrets.REACT_APP_FIREBASE_API_KEY}}
+          REACT_APP_FIREBASE_APPID: ${{secrets.REACT_APP_FIREBASE_APPID}}
+          REACT_APP_FIREBASE_AUTH_DOMAIN: ${{secrets.REACT_APP_FIREBASE_AUTH_DOMAIN}}
+          REACT_APP_FIREBASE_MEASUREMENT_ID: ${{secrets.REACT_APP_FIREBASE_MEASUREMENT_ID}}
+          REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID}}
+          REACT_APP_FIREBASE_PROJECT_ID: ${{secrets.REACT_APP_FIREBASE_PROJECT_ID}}
+          REACT_APP_FIREBASE_STORAGE_BUCKET: ${{secrets.REACT_APP_FIREBASE_STORAGE_BUCKET}}
+
+      - name: Deploy to Heroku
+        run: |
+          heroku plugins:install heroku-cli-static
+          heroku static:deploy --app ${{secrets.HEROKU_APP_NAME}}
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+
