@@ -11,7 +11,7 @@ import blogReducer from './slices/blog';
 import productReducer from './slices/product';
 import userReducer from './slices/user';
 import restaurantReducer from './slices/restaurant';
-import logEntryReducer from './slices/log-entry';
+import foodItemsReducer from './slices/food-items';
 import notificationsReducer from './slices/notifications';
 
 // ----------------------------------------------------------------------
@@ -43,7 +43,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   notifications: notificationsReducer,
   restaurant: restaurantReducer,
-  logEntry: logEntryReducer
+  foodItems: foodItemsReducer
 });
 
 export { rootPersistConfig, rootReducer };

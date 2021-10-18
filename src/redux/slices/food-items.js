@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getFoodItemsList } from '../../api/requests';
 
-const logEntrySlice = createSlice({
-  name: 'logEntry',
+const foodItemsSlice = createSlice({
+  name: 'foodItems',
 
   initialState: {
-    logEntry: null
+    foodItems: null
   },
 
   reducers: {
@@ -18,26 +19,27 @@ const logEntrySlice = createSlice({
       state.error = action.payload;
     },
     // GET LOG ENTRY
-    getLogEntrySuccess(state, action) {
+    getfoodItemsSuccess(state, action) {
       state.isLoading = false;
-      state.logEntry = action.payload;
+      state.foodItems = action.payload;
     }
   }
 });
 
 // Reducer
-export default logEntrySlice.reducer;
+export default foodItemsSlice.reducer;
 
 // ----------------------------------------------------------------------
 
-export function getlogEntry() {
+export function getfoodItems() {
   return async dispatch => {
-    dispatch(logEntrySlice.actions.startLoading());
+    dispatch(foodItemsSlice.actions.startLoading());
     try {
-      const response = {};
-      dispatch(logEntrySlice.actions.getLogEntrySuccess(response));
+      const response = await getFoodItemsList('Dominoes');
+      console.log(response);
+      dispatch(foodItemsSlice.actions.getfoodItemsSuccess(response));
     } catch (error) {
-      dispatch(logEntrySlice.actions.hasError(error));
+      dispatch(foodItemsSlice.actions.hasError(error));
     }
   };
 }

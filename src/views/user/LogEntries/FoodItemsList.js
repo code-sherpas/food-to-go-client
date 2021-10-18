@@ -3,7 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Skeleton } from '@material-ui/core';
-import LogEntry from './LogEntry';
+import LogEntry from './FoodItem';
+import FoodItem from './FoodItem';
 
 // ----------------------------------------------------------------------
 
@@ -27,24 +28,24 @@ const SkeletonLoad = (
   </Grid>
 );
 
-LogEntryList.propTypes = {
-  logEntry: PropTypes.array.isRequired,
+FoodItemsList.propTypes = {
+  foodItems: PropTypes.array.isRequired,
   className: PropTypes.string
 };
 
-function LogEntryList({ logEntry, className }) {
+function FoodItemsList({ foodItems, className }) {
   const classes = useStyles();
 
   return (
     <Grid container spacing={3} className={clsx(classes.root, className)}>
-      {logEntry.map(log => (
-        <Grid key={log.id} item xs={12} sm={6} md={4}>
-          <LogEntry logEntryKind={log} />
+      {foodItems.map(item => (
+        <Grid key={item.id} item xs={12} sm={6} md={4}>
+          <FoodItem items={item} />
         </Grid>
       ))}
-      {!logEntry.length && SkeletonLoad}
+      {!foodItems.length && SkeletonLoad}
     </Grid>
   );
 }
 
-export default LogEntryList;
+export default FoodItemsList;

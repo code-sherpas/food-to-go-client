@@ -55,16 +55,16 @@ function Welcome({ displayName, className, ...other }) {
           component="p"
           sx={{ typography: 'body2', color: 'grey.800', pb: { xs: 3, xl: 5 } }}
         >
-          Would you like to see the children that are present today?
+          Would you like to see the restaurant's avaiable today?
         </Box>
 
         <Button
           variant="contained"
           sx={{ backgroundColor: '#F10C5F' }}
-          to="/app/children"
+          to="/"
           component={RouterLink}
         >
-          View children
+          View restaurant
         </Button>
       </CardContent>
 

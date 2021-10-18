@@ -51,12 +51,12 @@ function UserItem({ user, className }) {
   const classes = useStyles();
   const { name, image, description, cost, distance } = user;
 
-  // const path = `/app/children/${childId}/log-entries`;
+  const path = `/app/get/items/${name}`;
   console.log(user);
 
   return (
     <CardActionArea>
-      <Link to="/">
+      <Link to={path}>
         <Card className={clsx(classes.root, className)}>
           <div className={classes.cardMediaWrap}>
             <Avatar

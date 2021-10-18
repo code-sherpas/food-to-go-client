@@ -31,16 +31,16 @@ const ICONS = {
 export default [
   // Kids
   // ----------------------------------------------------------------------
-  {
-    subheader: 'Children',
-    items: [
-      {
-        title: `Who's present today?`,
-        //icon: ICONS.user,
-        href: PATH_APP.management.user.children
-      }
-    ]
-  },
+  // {
+  //   subheader: 'Children',
+  //   items: [
+  //     {
+  //       title: `Who's present today?`,
+  //       //icon: ICONS.user,
+  //       href: PATH_APP.management.user.children
+  //     }
+  //   ]
+  // },
 
   // MAIN DASHBOARD
   // ----------------------------------------------------------------------

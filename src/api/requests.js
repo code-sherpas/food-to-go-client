@@ -5,13 +5,7 @@ export const getRestaurantList = async () => {
   return res.data;
 };
 
-export const getChildLogEntries = async childId => {
-  const res = await api.get('/log-entries', {
-    params: {
-      filter: {
-        childId
-      }
-    }
-  });
+export const getFoodItemsList = async restaurantName => {
+  const res = await api.get(`/get/items/${restaurantName}`);
   return res.data;
 };
