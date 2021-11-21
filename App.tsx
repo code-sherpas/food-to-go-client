@@ -103,12 +103,13 @@ export default function App() {
         </View>
         <View
           style={{
-            height: 10,
+            height: 50,
             width: 315,
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: 20,
+            padding: 5,
+            marginLeft: 10,
             alignItems: "flex-start",
           }}
         >
