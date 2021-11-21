@@ -29,7 +29,7 @@ export default function App() {
               alignItems: "center",
               justifyContent: "flex-start",
               alignContent: "center",
-              marginBottom: 15
+              marginBottom: 15,
             }}
           >
             <Icon
@@ -132,9 +132,7 @@ export default function App() {
           borderBottomWidth: 2,
         }}
       >
-        <Text>
-          <b>WHAT COULD YOU GET</b>
-        </Text>
+        <Text style={{ fontWeight: "bold" }}>WHAT COULD YOU GET</Text>
         <Text
           style={{
             marginTop: 5,
@@ -184,20 +182,20 @@ export default function App() {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: 300,
+            width: 320,
             alignSelf: "flex-start",
           }}
         >
-          <Text style={{ color: "#114D4D" }}>Ingredients and allergens</Text>
+          <Text style={{ color: "#114D4D", paddingHorizontal: 20 }}>
+            Ingredients and allergens
+          </Text>
         </View>
         <View style={{ paddingRight: 20 }}>
           <Icon name="angle-right" color="#114D4D" />
         </View>
       </View>
       <View style={styles.bottomRating}>
-        <Text>
-          <b>WHAT ARE OTHER PEOPLE SAYING</b>
-        </Text>
+        <Text style={{ fontWeight: "bold" }}>WHAT ARE OTHER PEOPLE SAYING</Text>
         <View
           style={{
             marginTop: 15,
