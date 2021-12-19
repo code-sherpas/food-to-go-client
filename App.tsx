@@ -7,8 +7,8 @@ import RestaurantView from "./views/restaurantView";
 export default function App() {
   return (
     <Provider store={store}>
-      <RestaurantView />
-      {/* <ListofRestaurantView/> */}
+      {/* <RestaurantView /> */}
+      <ListofRestaurantView/>
     </Provider>
   );
 }
