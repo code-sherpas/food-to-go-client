@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
 import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/CarouselItem';
@@ -37,7 +37,7 @@ export default function ListofRestaurantView() {
                     <Icon name="chevron-right" color="#114D4D" />
                 </View>
             </View>
-            <View style={{alignContent: "center"}}>
+            <View style={{ alignContent: "center" }}>
                 <CarouselComp
                     layout='tinder'
                     layoutCardOffset={7}
@@ -55,7 +55,7 @@ export default function ListofRestaurantView() {
                     <Icon name="chevron-right" color="#114D4D" />
                 </View>
             </View>
-            <View style={{alignContent: "center"}}>
+            <View style={{ alignContent: "center" }}>
                 <CarouselComp
                     layout='tinder'
                     layoutCardOffset={7}
@@ -66,9 +66,20 @@ export default function ListofRestaurantView() {
                     itemWidth={ITEM_WIDTH}
                 />
             </View>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+                <View style={styles.modal}>
+                    <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+                        <Icon name="times" style={{ marginRight: "1rem", marginTop: "1rem" }} />
+                    </View>
+                    <View style={{flexDirection: "row", justifyContent: "space-around", marginVertical: "2rem"}}>
+                        <Text  style={{ fontWeight: "900", fontSize: "20px" }}>How does <br />Too Good To Go <br />work</Text>
+                        <Image style={styles.image} source={{uri: "https://tgtg-mkt-cms-prod.s3.eu-west-1.amazonaws.com/13508/TGTG_Icon_2000x1666px_RGB-%281%29.png"}} />
+                    </View>
+                    <View>
 
-
-            <View style={{ flex: 2, backgroundColor: 'blue' }} />
+                    </View>
+                </View>
+            </View>
         </View>
     </>)
 }
@@ -82,5 +93,19 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 30,
         fontWeight: "900"
+    },
+    modal: {
+        borderRadius: 8,
+        width: "20rem",
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: -9, height: 13 },
+        shadowOpacity: 0.13,
+        shadowRadius: 20,
+        marginBottom: "2rem"
+    },
+    image:{
+        height: "3.25rem",
+        width: "4rem"
     }
 })
