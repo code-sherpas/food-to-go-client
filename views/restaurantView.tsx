@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { StyleSheet, View, ImageBackground, Text, Image } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { RootState } from "../redux/store";
-import { getRestaurantDetails } from "../api/requests";
 import { fetchRestaurantDetails } from "../redux/slices/restaurantSlice";
-import { Rating } from "react-native-elements";
 
 export default function RestaurantSlice() {
   const dispatch = useDispatch();

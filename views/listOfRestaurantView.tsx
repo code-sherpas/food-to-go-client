@@ -1,11 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
 import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/CarouselItem';
-import carouselData from '../api/carouselData';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
+import { fecthListOfRestaurants } from '../redux/slices/listOfRestaurantViewSlice';
+
 
 export default function ListofRestaurantView() {
+    const dispatch = useDispatch();
+    const listViewOfRestaurants = useSelector((state: RootState) => state.listView);
+    function getListView() {
+        dispatch(fecthListOfRestaurants(8));
+    }
+    useEffect(() => {
+        getListView();
+    }, [dispatch])
 
     const isCarousel = useRef(null);
 
@@ -18,8 +29,8 @@ export default function ListofRestaurantView() {
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Icon name="location-arrow" color="#114D4D" />
                     <View style={{ marginLeft: "0.5rem" }}>
-                        <Text style={{ color: "#114D4D", fontWeight: "900" }}>la Bordeta, Barcelona</Text>
-                        <Text style={{ color: "#114D4D" }} >within 10 km</Text>
+                        <Text style={{ color: "#114D4D", fontWeight: "900" }}>{listViewOfRestaurants.listView.place}</Text>
+                        <Text style={{ color: "#114D4D" }} >{listViewOfRestaurants.listView.distance}</Text>
                     </View>
                 </View>
                 <View>
@@ -42,7 +53,7 @@ export default function ListofRestaurantView() {
                     layout='tinder'
                     layoutCardOffset={7}
                     ref={isCarousel}
-                    data={carouselData}
+                    data={listViewOfRestaurants.listView.deals}
                     renderItem={CarouselItem}
                     sliderWidth={SLIDER_WIDTH}
                     itemWidth={ITEM_WIDTH}
@@ -60,7 +71,7 @@ export default function ListofRestaurantView() {
                     layout='tinder'
                     layoutCardOffset={7}
                     ref={isCarousel}
-                    data={carouselData}
+                    data={listViewOfRestaurants.listView.recommended}
                     renderItem={CarouselItem}
                     sliderWidth={SLIDER_WIDTH}
                     itemWidth={ITEM_WIDTH}
@@ -71,9 +82,9 @@ export default function ListofRestaurantView() {
                     <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
                         <Icon name="times" style={{ marginRight: "1rem", marginTop: "1rem" }} />
                     </View>
-                    <View style={{flexDirection: "row", justifyContent: "space-around", marginVertical: "2rem"}}>
-                        <Text  style={{ fontWeight: "900", fontSize: "20px" }}>How does <br />Too Good To Go <br />work</Text>
-                        <Image style={styles.image} source={{uri: "https://tgtg-mkt-cms-prod.s3.eu-west-1.amazonaws.com/13508/TGTG_Icon_2000x1666px_RGB-%281%29.png"}} />
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", marginVertical: "2rem" }}>
+                        <Text style={{ fontWeight: "900", fontSize: "20px" }}>How does <br />Too Good To Go <br />work</Text>
+                        <Image style={styles.image} source={{ uri: "https://tgtg-mkt-cms-prod.s3.eu-west-1.amazonaws.com/13508/TGTG_Icon_2000x1666px_RGB-%281%29.png" }} />
                     </View>
                     <View>
 
@@ -104,7 +115,7 @@ const styles = StyleSheet.create({
         shadowRadius: 20,
         marginBottom: "2rem"
     },
-    image:{
+    image: {
         height: "3.25rem",
         width: "4rem"
     }
