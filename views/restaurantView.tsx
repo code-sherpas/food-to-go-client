@@ -384,7 +384,6 @@ const styles = StyleSheet.create({
 
   },
   reserve: {
-    // opacity: 0.9,
     marginTop: "185%",
     position: "absolute",
     width: "100%",
