@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getDeals, getLocation, getRecommended } from "../../api/requests";
 
 export const fetchDeals = createAsyncThunk(
-  "listView/fecthDeals",
+  "listView/fetchDeals",
   async (payload?: any): Promise<any> => {
     const response = (await getDeals());
     response.data = response.data.map((deal) => {
@@ -16,7 +16,7 @@ export const fetchDeals = createAsyncThunk(
 );
 
 export const fetchRecommended = createAsyncThunk(
-  "listView/fecthRecommended",
+  "listView/fetchRecommended",
   async (payload?: any): Promise<any> => {
     const response = await getRecommended();
     return response;
@@ -24,7 +24,7 @@ export const fetchRecommended = createAsyncThunk(
 );
 
 export const fetchLocation = createAsyncThunk(
-  "listView/fecthLocation",
+  "listView/fetchLocation",
   async (payload?: any): Promise<any> => {
     const response = getLocation();
     return response;
