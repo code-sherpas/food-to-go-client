@@ -1,10 +1,32 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getListViewOfRestaurants } from "../../api/requests";
+import { getDeals, getLocation, getRecommended } from "../../api/requests";
 
-export const fecthListOfRestaurants = createAsyncThunk(
-  "listView/fecthListOfRestaurants",
+export const fetchDeals = createAsyncThunk(
+  "listView/fecthDeals",
   async (payload?: any): Promise<any> => {
-    const response = await getListViewOfRestaurants();
+    const response = (await getDeals());
+    response.data = response.data.map((deal) => {
+      return {
+        lastChance: true,
+        ...deal,
+      };
+    });
+    return response;
+  }
+);
+
+export const fetchRecommended = createAsyncThunk(
+  "listView/fecthRecommended",
+  async (payload?: any): Promise<any> => {
+    const response = await getRecommended();
+    return response;
+  }
+);
+
+export const fetchLocation = createAsyncThunk(
+  "listView/fecthLocation",
+  async (payload?: any): Promise<any> => {
+    const response = getLocation();
     return response;
   }
 );
@@ -14,13 +36,21 @@ const listOfRestaurantsViewSlice = createSlice<any, any>({
 
   initialState: {
     status: "success",
-    listView: {}
+    deals: [],
+    recommended: [],
+    location: {},
   },
 
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fecthListOfRestaurants.fulfilled, (state, action) => {
-      state.listView = action.payload.data;
+    builder.addCase(fetchDeals.fulfilled, (state, action) => {
+      state.deals = action.payload.data;
+      return state;
+    }).addCase(fetchRecommended.fulfilled, (state, action) => {
+      state.recommended = action.payload.data;
+      return state;
+    }).addCase(fetchLocation.fulfilled, (state, action) => {
+      state.location = action.payload.data;
       return state;
     });
   },

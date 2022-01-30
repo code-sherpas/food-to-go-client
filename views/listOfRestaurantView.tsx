@@ -2,17 +2,21 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
-import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/carouselItem';
+import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/CarouselItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
-import { fecthListOfRestaurants } from '../redux/slices/listOfRestaurantViewSlice';
+import { fetchDeals, fetchLocation, fetchRecommended } from '../redux/slices/listOfRestaurantViewSlice';
 
 
 export default function ListofRestaurantView() {
     const dispatch = useDispatch();
-    const listViewOfRestaurants = useSelector((state: RootState) => state.listView);
+    const dealsData = useSelector((state: RootState) => state.listView.deals);
+    const locationData = useSelector((state: RootState) => state.listView.location);
+    const recommendedData = useSelector((state: RootState) => state.listView.recommended);
     function getListView() {
-        dispatch(fecthListOfRestaurants(8));
+        dispatch(fetchDeals(8));
+        dispatch(fetchLocation(8));
+        dispatch(fetchRecommended(8));
     }
     useEffect(() => {
         getListView();
@@ -29,8 +33,8 @@ export default function ListofRestaurantView() {
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Icon name="location-arrow" color="#114D4D" />
                     <View style={{ marginLeft: "0.5rem" }}>
-                        <Text style={{ color: "#114D4D", fontWeight: "900" }}>{listViewOfRestaurants.listView.place}</Text>
-                        <Text style={{ color: "#114D4D" }} >{listViewOfRestaurants.listView.distance}</Text>
+                        <Text style={{ color: "#114D4D", fontWeight: "900" }}>{locationData.place}</Text>
+                        <Text style={{ color: "#114D4D" }} >{locationData.distance}</Text>
                     </View>
                 </View>
                 <View>
@@ -50,10 +54,10 @@ export default function ListofRestaurantView() {
             </View>
             <View style={{ alignContent: "center" }}>
                 <CarouselComp
-                    layout='tinder'
+                    layout='default'
                     layoutCardOffset={7}
                     ref={isCarousel}
-                    data={listViewOfRestaurants.listView.deals}
+                    data={dealsData}
                     renderItem={CarouselItem}
                     sliderWidth={SLIDER_WIDTH}
                     itemWidth={ITEM_WIDTH}
@@ -68,10 +72,10 @@ export default function ListofRestaurantView() {
             </View>
             <View style={{ alignContent: "center" }}>
                 <CarouselComp
-                    layout='tinder'
+                    layout='default'
                     layoutCardOffset={7}
                     ref={isCarousel}
-                    data={listViewOfRestaurants.listView.recommended}
+                    data={recommendedData}
                     renderItem={CarouselItem}
                     sliderWidth={SLIDER_WIDTH}
                     itemWidth={ITEM_WIDTH}

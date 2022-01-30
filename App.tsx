@@ -9,8 +9,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.rootContainer}>
-      <RestaurantView />
-      {/* <ListofRestaurantView/> */}
+      {/* <RestaurantView /> */}
+      <ListofRestaurantView/>
       </View>
     </Provider>
   );
