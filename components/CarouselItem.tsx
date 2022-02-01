@@ -21,7 +21,6 @@ type ItemAttributes = {
 type StoreDetails = {
     id: string,
     profile_url: string,
-    banner_url: string,
     address: string,
     name: string,
 };
@@ -54,7 +53,7 @@ const CarouselItem = ({ item, index }: { item: Item, index: number }) => {
                         </>
                     )} /> :
                     <Badge badgeStyle={styles.quantity_badge} text={`${item.attributes.pack.quantity_in_stock} left`} />}
-                <Image source={{ uri: item.attributes.store.banner_url }} style={styles.image} />
+                <Image source={{ uri: item.attributes.store.profile_url }} style={styles.image} />
                 <Badge badgeStyle={styles.price_badge} textStyle={styles.price_badge_text} text={`${item.attributes.pack.unitary_price_after_discount.currency} ${item.attributes.pack.unitary_price_after_discount.value}`} />
             </View>
             <View style={{ padding: "0.5rem" }}>
