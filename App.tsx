@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { View, Text, StyleSheet, Button } from 'react-native';
-import ListofRestaurantView from "./views/listOfRestaurantView";
+import ListOfRestaurantView from "./views/listOfRestaurantView";
 import RestaurantView from "./views/restaurantView";
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
     <Provider store={store}>
       <View style={styles.rootContainer}>
       {/* <RestaurantView /> */}
-      <ListofRestaurantView/>
+      <ListOfRestaurantView/>
       </View>
     </Provider>
   );

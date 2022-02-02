@@ -8,7 +8,7 @@ import { RootState } from '../redux/store';
 import { fetchDeals, fetchLocation, fetchRecommended } from '../redux/slices/listOfRestaurantViewSlice';
 
 
-export default function ListofRestaurantView() {
+export default function ListOfRestaurantView() {
     const dispatch = useDispatch();
     const dealsData = useSelector((state: RootState) => state.listView.deals);
     const locationData = useSelector((state: RootState) => state.listView.location);
