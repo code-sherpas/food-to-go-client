@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StyleSheet, View, ImageBackground, Text, Image } from "react-native";
+import { StyleSheet, View, ImageBackground, Text, Image, Button, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { RootState } from "../redux/store";
-import { getRestaurantDetails } from "../api/requests";
 import { fetchRestaurantDetails } from "../redux/slices/restaurantSlice";
-import { Rating } from "react-native-elements";
 
 export default function RestaurantSlice() {
   const dispatch = useDispatch();
@@ -14,7 +12,7 @@ export default function RestaurantSlice() {
   function displayRestaurantBanner() {
     return (
       <>
-        <View style={{ flex: 2 }}>
+        <View style={{ height: "40%" }}>
           <ImageBackground
             source={{
               uri: restaurant.restaurant.attributes.store.banner_url,
@@ -285,6 +283,28 @@ export default function RestaurantSlice() {
     )
   }
 
+  function reserveButton(){
+      return(
+        <>
+        <View style={styles.reserve}>
+          <View style={{backgroundColor: "#114D4D", height: "3rem", width: "90%", padding: "1rem", borderRadius: "3rem" }}>
+            <Text style={{color: "white", textAlign: "center", fontSize: "15px", zIndex: 69}}>
+            Reserve
+              </Text>
+          </View>
+        </View>
+        </>
+      )
+  }
+
+  function opaqueBackground(){
+    return(
+      <>
+      <View style={styles.opaque}/>
+      </>
+    )
+  }
+
   function getRestaurant() {
     dispatch(fetchRestaurantDetails("2ef65b3b-8f4e-4288-8b58-998cb6bdab46"));
   }
@@ -300,14 +320,11 @@ export default function RestaurantSlice() {
   return (
     <>
       {restaurant.restaurant.attributes ? (
-        <View
-          style={[
-            styles.container,
-            {
-              flexDirection: "column",
-            },
-          ]}
+        <>
+        <ScrollView
+          style={styles.container}
         >
+          
           {displayRestaurantBanner()}
           {displayRestaurantNameAndRating()}
           {displayTime()}
@@ -316,7 +333,14 @@ export default function RestaurantSlice() {
           {displayFoodItems()}
           {displayIngredeintsAndAllergens()}
           {displayRatingAtBottom()}
-        </View>
+          {displayRatingAtBottom()}
+          {displayRatingAtBottom()}
+          {displayRatingAtBottom()}
+
+        </ScrollView>
+        {opaqueBackground()}
+        {reserveButton()}
+      </>
       ) : (
         <></>
       )}
@@ -333,6 +357,7 @@ const styles = StyleSheet.create({
   bottomRating: {
     padding: 20,
     flex: 1,
+    marginTop: "2rem",
     display: "flex",
     textAlign: "center",
     flexDirection: "column",
@@ -351,8 +376,28 @@ const styles = StyleSheet.create({
     color: "white",
   },
   container: {
+
+    display: 'flex',
+    flexDirection: 'column',
     flex: 1,
+    minHeight: "100%"
+
   },
+  reserve: {
+    marginTop: "185%",
+    position: "absolute",
+    width: "100%",
+    alignItems: "center",
+  }, 
+  opaque:{
+        opacity: 0.8,
+        marginTop: "170%",
+        position: "absolute",
+        height: "10rem",
+        width: "100%",
+        backgroundColor: "white",
+        alignItems: "center",
+  }
 });
 function useParams(): { restId: any } {
   throw new Error("Function not implemented.");
