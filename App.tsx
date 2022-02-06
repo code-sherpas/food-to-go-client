@@ -4,13 +4,15 @@ import store from "./redux/store";
 import { View, Text, StyleSheet, Button } from 'react-native';
 import ListOfRestaurantView from "./views/listOfRestaurantView";
 import RestaurantView from "./views/restaurantView";
+import MapView from "./views/MapView";
 
 export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.rootContainer}>
-      {/* <RestaurantView /> */}
-      <ListOfRestaurantView/>
+        {/* <RestaurantView /> */}
+        {/* <ListOfRestaurantView /> */}
+        <MapView />
       </View>
     </Provider>
   );
