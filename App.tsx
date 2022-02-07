@@ -21,6 +21,6 @@ export default function App() {
 const styles = StyleSheet.create({
   rootContainer: {
     backgroundColor: "#FCF9F2",
-    minHeight: 100
+    flex: 1
   }
 })
