@@ -8,12 +8,12 @@ export default function AppMapView() {
     return (
         <>
             <View style={styles.container}>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', padding: "2rem" }}>
-                    <View style={{ height: "3rem", width: "20rem" }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 2 }}>
+                    <View style={{ height: 3, width: 20 }}>
                         <Text style={styles.headingtop}>Choose a location to discover what's available</Text>
                     </View>
                 </View>
-                <View style={{ width: '100%', height: '70%' }}>
+                <View style={{ width: 100, height: 70 }}>
                     <MapView
                         style={styles.mapStyle}
                         initialRegion={{
@@ -24,8 +24,8 @@ export default function AppMapView() {
                         }}
                     />
                 </View>
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
-                    <View style={{ flexDirection: 'column', width: "100%", alignItems: 'center' }}>
+                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', width:  100}}>
+                    <View style={{ flexDirection: 'column', width: 100, alignItems: 'center' }}>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Icon name="location-arrow" color="#114D4D" />
                             <Text style={styles.uselocation}>Use my current location</Text>
@@ -56,16 +56,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     mapStyle: {
-        height: '500px',
-        width: '100%',
+        height: 500,
+        width: 100,
     },
     uselocation: {
         color: '#114D4D',
         fontWeight: 'bold',
-        marginLeft: '0.5rem',
+        marginLeft: 0.5,
     },
     bottombutton: {
-        width: '80%',
-        marginTop: '1.5rem'
+        width: 80,
+        marginTop: 1.5
     }
 });

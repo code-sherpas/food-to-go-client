@@ -10,9 +10,9 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.rootContainer}>
-        <RestaurantView />
+        {/* <RestaurantView /> */}
         {/* <ListOfRestaurantView /> */}
-        {/* <MapView /> */}
+        <MapView />
       </View>
     </Provider>
   );
@@ -21,6 +21,6 @@ export default function App() {
 const styles = StyleSheet.create({
   rootContainer: {
     backgroundColor: "#FCF9F2",
-    minHeight: "100%"
+    minHeight: 100
   }
 })
