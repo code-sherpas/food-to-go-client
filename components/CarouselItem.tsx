@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { View, Text, StyleSheet, Dimensions, Image, StyleProp, ViewStyle } from "react-native";
+import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 export const SLIDER_WIDTH = Dimensions.get('window').width;
@@ -56,8 +56,8 @@ const CarouselItem = ({ item, index }: { item: Item, index: number }) => {
                 <Image source={{ uri: item.attributes.store.profile_url }} style={styles.image} />
                 <Badge badgeStyle={styles.price_badge} textStyle={styles.price_badge_text} text={`${item.attributes.pack.unitary_price_after_discount.currency} ${item.attributes.pack.unitary_price_after_discount.value}`} />
             </View>
-            <View style={{ padding: "0.5rem" }}>
-                <Text style={{ fontWeight: "900", fontSize: "15px", marginTop: "0.5rem" }}>{item.attributes.store.name}</Text>
+            <View style={{ padding: 8 }}>
+                <Text style={{ fontWeight: "900", fontSize: 15, marginTop: 8 }}>{item.attributes.store.name}</Text>
                 <Text>{item.attributes.pack.type}</Text>
                 <Text style={{ color: "grey" }}>{new Date(item.attributes.pack.available_from).toDateString()}{" "} - {" "}{new Date(item.attributes.pack.available_until).toDateString()}</Text>
             </View>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: -9, height: 13 },
         shadowOpacity: 0.13,
         shadowRadius: 20,
-        marginBottom: "2rem"
+        marginBottom: 32
     },
     image: {
         borderTopLeftRadius: 8,
