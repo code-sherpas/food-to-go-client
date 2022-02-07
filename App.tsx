@@ -11,8 +11,8 @@ export default function App() {
     <Provider store={store}>
       <View style={styles.rootContainer}>
         {/* <RestaurantView /> */}
-        {/* <ListOfRestaurantView /> */}
-        <MapView />
+        <ListOfRestaurantView />
+        {/* <MapView /> */}
       </View>
     </Provider>
   );
