@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text, Button, Dimensions } from 'react-native';
+import { Picker } from '@react-native-community/picker'
 import Icon from "react-native-vector-icons/FontAwesome5";
 import MapView, { Marker } from 'react-native-maps';
 
 export default function AppMapView() {
+
+    const [selectedValue, setSelectedValue] = useState("10 km");
+
     const dimensions = Dimensions.get('window');
     const mapHeight = Math.round(dimensions.height * 11 / 16);
     const mapWidth = dimensions.width;
@@ -17,7 +21,21 @@ export default function AppMapView() {
                         <Text style={styles.headingtop}>Choose a location to discover what's available</Text>
                     </View>
                 </View>
-                <View style={{}}>
+                <View>
+                    <View style={{ position: 'absolute', zIndex: 90, marginTop: 20 }}>
+                        <Picker
+                            selectedValue={selectedValue}
+                            style={{ height: 50, width: 150, backgroundColor: 'white', marginLeft: Math.round(dimensions.width * 5/16)}}
+                            onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                        >
+                            <Picker.Item label="3 km" value={3} />
+                            <Picker.Item label="5 km" value={5} />
+                            <Picker.Item label="10 km" value={10} />
+                            <Picker.Item label="15 km" value={15} />
+                            <Picker.Item label="20 km" value={20} />
+
+                        </Picker>
+                    </View>
                     <MapView
                         style={{ width: mapWidth, height: mapHeight }}
                         initialRegion={{
