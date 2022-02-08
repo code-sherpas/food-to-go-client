@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Button, Dimensions, Platform } from 'react-native';
-import { Picker } from '@react-native-community/picker'
 import Icon from "react-native-vector-icons/FontAwesome5";
 import MapView, { Marker } from 'react-native-maps';
 import Constants from 'expo-constants';
@@ -53,20 +52,6 @@ export default function AppMapView() {
                     </View>
                 </View>
                 <View>
-                    <View style={{ position: 'absolute', zIndex: 90, marginTop: 20 }}>
-                        <Picker
-                            selectedValue={selectedValue}
-                            style={{ height: 50, width: 150, backgroundColor: 'white', marginLeft: Math.round(dimensions.width * 5 / 16) }}
-                            onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-                        >
-                            <Picker.Item label="3 km" value={3} />
-                            <Picker.Item label="5 km" value={5} />
-                            <Picker.Item label="10 km" value={10} />
-                            <Picker.Item label="15 km" value={15} />
-                            <Picker.Item label="20 km" value={20} />
-
-                        </Picker>
-                    </View>
                     {(location != null) ? <MapView
                         style={{ width: mapWidth, height: mapHeight }}
                         initialRegion={{ latitude: location.latitude, longitude: location.longitude, latitudeDelta: 0.0922, longitudeDelta: 0.0421 }}
@@ -76,7 +61,7 @@ export default function AppMapView() {
 
                 </View>
                 <View style={{ flex: 2, flexDirection: 'row', justifyContent: 'center', width: mapWidth }}>
-                    <View style={{ flexDirection: 'column', width: mapWidth, alignItems: 'center', paddingTop: 50 }}>
+                    <View style={{ flexDirection: 'column', width: mapWidth, alignItems: 'center', paddingTop: 40 }}>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Icon name="location-arrow" color="#114D4D" />
                             <Text style={styles.uselocation}>Use my current location</Text>
