@@ -33,7 +33,7 @@ export default function ListOfRestaurantView() {
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Icon name="location-arrow" color="#114D4D" />
                     <View style={{ marginLeft: 15 }}>
-                        <Text style={{ color: "#114D4D", fontWeight: "900" }}>{locationData.place}</Text>
+                        <Text style={{ color: "#114D4D", fontWeight: "bold" }}>{locationData.place}</Text>
                         <Text style={{ color: "#114D4D" }} >{locationData.distance}</Text>
                     </View>
                 </View>
@@ -46,7 +46,7 @@ export default function ListOfRestaurantView() {
                 </View>
             </View>
             <View style={{ marginBottom: 15, flexDirection: "row", paddingHorizontal: 15, paddingTop: 15, justifyContent: "space-between" }} >
-                <Text style={{ fontWeight: 900, fontSize: 20 }}>Save before it's too late</Text>
+                <Text style={{ fontWeight: "bold", fontSize: 20 }}>Save before it's too late</Text>
                 <View style={{ flexDirection: "row", height: "fit-content", alignItems: "center" }}>
                     <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: 7 }}>See all</Text>
                     <Icon name="chevron-right" color="#114D4D" />
@@ -64,7 +64,7 @@ export default function ListOfRestaurantView() {
                 />
             </View>
             <View style={{ marginBottom: 30, flexDirection: "row", paddingHorizontal: 15, paddingTop: 15, justifyContent: "space-between" }} >
-                <Text style={{ fontWeight: 900, fontSize: 20 }}>Recommended for you</Text>
+                <Text style={{ fontWeight: "bold", fontSize: 20 }}>Recommended for you</Text>
                 <View style={{ flexDirection: "row", height: "fit-content", alignItems: "center" }}>
                     <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: 7 }}>See all</Text>
                     <Icon name="chevron-right" color="#114D4D" />
@@ -87,7 +87,7 @@ export default function ListOfRestaurantView() {
                         <Icon name="times" style={{ marginRight: 15, marginTop: 15 }} />
                     </View>
                     <View style={{ flexDirection: "row", justifyContent: "space-around", marginVertical: 30 }}>
-                        <Text style={{ fontWeight: 900, fontSize: 20 }}>How does <br />Too Good To Go <br />work</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 20 }}>How does <br />Too Good To Go <br />work</Text>
                         <Image style={styles.image} source={{ uri: "https://tgtg-mkt-cms-prod.s3.eu-west-1.amazonaws.com/13508/TGTG_Icon_2000x1666px_RGB-%281%29.png" }} />
                     </View>
                     <View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 30,
-        fontWeight: "900"
+        fontWeight: "bold"
     },
     modal: {
         borderRadius: 8,
