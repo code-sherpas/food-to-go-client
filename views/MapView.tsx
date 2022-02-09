@@ -39,6 +39,11 @@ export default function AppMapView({ navigation }) {
         })();
     }, []);
 
+    let markers: any[] = []
+    if (location) {
+        markers = [[location.latitude + 0.001, location.longitude + 0.001], [location.latitude + 0.002, location.longitude + 0.03], [location.latitude + 0.05, location.longitude + 0.06], [location.latitude - 0.03, location.longitude + 0.03]]
+    }
+
     let text = 'Waiting..';
     if (errorMsg) {
         text = errorMsg;
@@ -59,7 +64,9 @@ export default function AppMapView({ navigation }) {
                         style={{ width: mapWidth, height: mapHeight }}
                         initialRegion={{ latitude: location.latitude, longitude: location.longitude, latitudeDelta: 0.0922, longitudeDelta: 0.0421 }}
                     >
-                        <Marker coordinate={{ latitude: location.latitude, longitude: location.longitude }} pinColor="#FF0000" />
+                        {markers.map((marker, index) => (
+                            <><Marker key={1} coordinate={{ latitude: marker[0], longitude: marker[1] }} pinColor="#FF0000" /></>
+                        ))}
                     </MapView> : <></>}
 
                 </View>

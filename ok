@@ -1,0 +1,39 @@
+INFO [02-08|21:21:55.617] Your new key was generated               address=0xC49cdAf7ff837DE796B9ac7e4c266E7fb8F13E7D
+WARN [02-08|21:21:55.617] Please backup your key file!             path=/Users/ashikkagupta/Library/Ethereum/keystore/UTC--2022-02-08T15-51-54.656956000Z--c49cdaf7ff837de796b9ac7e4c266e7fb8f13e7d
+WARN [02-08|21:21:55.617] Please remember your password!
+Generated account 0xC49cdAf7ff837DE796B9ac7e4c266E7fb8F13E7D
+
+INFO [02-08|21:23:11.514] Your new key was generated               address=0xB54B9cEd477270fF917060840C1A812269db55BF
+WARN [02-08|21:23:11.514] Please backup your key file!             path=/Users/ashikkagupta/Library/Ethereum/keystore/UTC--2022-02-08T15-53-10.547668000Z--b54b9ced477270ff917060840c1a812269db55bf
+WARN [02-08|21:23:11.514] Please remember your password!
+Generated account 0xB54B9cEd477270fF917060840C1A812269db55BF
+
+eth.sendTransaction({from:"0xB54B9cEd477270fF917060840C1A812269db55BF",to:"0xC49cdAf7ff837DE796B9ac7e4c266E7fb8F13E7D", value: 0.3})
+
+
+
+µs" set="17.625µs" diff="2.584µs"
+INFO [02-09|00:01:58.224] Your new key was generated               address=0xdD698C9237D09928fA9d22d1c33970FC2d7ea0dD
+WARN [02-09|00:01:58.225] Please backup your key file!             path=/Users/ashikkagupta/Library/Ethereum/keystore/UTC--2022-02-08T18-31-56.713969000Z--dd698c9237d09928fa9d22d1c33970fc2d7ea0dd
+WARN [02-09|00:01:58.225] Please remember your password!
+Generated account 0xdD698C9237D09928fA9d22d1c33970FC2d7ea0dD
+
+µs" set="18.084µs" diff="2.875µs"
+INFO [02-09|00:02:20.065] Your new key was generated               address=0xad804ddF38Feee0B465F69459CBfc9fA225bEB9C
+WARN [02-09|00:02:20.065] Please backup your key file!             path=/Users/ashikkagupta/Library/Ethereum/keystore/UTC--2022-02-08T18-32-18.553624000Z--ad804ddf38feee0b465f69459cbfc9fa225beb9c
+WARN [02-09|00:02:20.065] Please remember your password!
+Generated account 0xad804ddF38Feee0B465F69459CBfc9fA225bEB9C
+
+
+eth.sendTransaction({from:"0xB54B9cEd477270fF917060840C1A812269db55BF",to:"0xC49cdAf7ff837DE796B9ac7e4c266E7fb8F13E7D", value: web3.toWei(0.01,"ether")})
+
+
+                            <><Marker key={1} coordinate={{ latitude: marker[0], longitude: marker[1] }} pinColor="#FF0000" /></>
+let markers: any[] = []
+    if (location) {
+        markers = [[location.latitude + 0.001, location.longitude + 0.001], [location.latitude + 0.002, location.longitude + 0.03], [location.latitude + 0.05, location.longitude + 0.06], [location.latitude - 0.03, location.longitude + 0.03]]
+    }
+
+{markers.map((marker, index) => (
+                            <><Marker key={1} coordinate={{ latitude: marker[0], longitude: marker[1] }} pinColor="#FF0000" /></>
+                        ))}
