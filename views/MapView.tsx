@@ -4,8 +4,11 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import MapView, { Marker } from 'react-native-maps';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function AppMapView() {
+
+export default function AppMapView({ navigation }) {
 
     const [selectedValue, setSelectedValue] = useState("10 km");
 
@@ -45,7 +48,7 @@ export default function AppMapView() {
     return (
         <>
             <View style={styles.container}>
-              
+
                 <View style={{ height: Math.round(dimensions.width * 5 / 16), flexDirection: 'row', justifyContent: 'center', paddingTop: 60, paddingBottom: 20 }}>
                     <View style={{ width: Math.round(dimensions.width * 3 / 4) }}>
                         <Text style={styles.headingtop}>Choose a location to discover what's available</Text>
@@ -68,7 +71,7 @@ export default function AppMapView() {
                         </View>
                         <View style={{ width: Math.round(dimensions.width * 3 / 4), marginTop: 15 }}>
                             <Button
-                                onPress={() => { console.log("hi") }}
+                                onPress={() => { navigation.navigate('ListOfRestaurantView') }}
                                 title="Choose this location"
                                 color="#114D4D"
                             />
