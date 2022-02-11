@@ -69,7 +69,7 @@ export default function AppMapView({ navigation }) {
                         style={{ width: mapWidth, height: mapHeight }}
                         initialRegion={{ latitude: location.latitude, longitude: location.longitude, latitudeDelta: 0.0922, longitudeDelta: 0.0421 }}
                     >
-                        {(mapData != null) ? (mapData.map((marker: any) => { <Marker coordinate={{ latitude: marker.attributes.store.location.latitude, longitude: marker.attributes.store.location.longitude }} pinColor="#FF0000" /> })) : <></>}
+                        {(mapData != null) ? (mapData.map((marker: any, index: any) => <Marker key={index++} coordinate={{ latitude: marker.attributes.store.location.latitude, longitude: marker.attributes.store.location.longitude }} pinColor="#FF0000" /> )) : <></>}
                     </MapView> : <></>}
 
                 </View>
