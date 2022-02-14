@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Button, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
 import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/CarouselItem';
@@ -8,7 +8,7 @@ import { RootState } from '../redux/store';
 import { fetchDeals, fetchLocation, fetchRecommended } from '../redux/slices/listOfRestaurantViewSlice';
 
 
-export default function ListOfRestaurantView() {
+export default function ListOfRestaurantView({ navigation }) {
     const dispatch = useDispatch();
     const dealsData = useSelector((state: RootState) => state.listView.deals);
     const locationData = useSelector((state: RootState) => state.listView.location);
@@ -53,15 +53,18 @@ export default function ListOfRestaurantView() {
                 </View>
             </View>
             <View style={{ alignContent: "center" }}>
-                <CarouselComp
-                    layout='default'
-                    layoutCardOffset={7}
-                    ref={isCarousel}
-                    data={dealsData}
-                    renderItem={CarouselItem}
-                    sliderWidth={SLIDER_WIDTH}
-                    itemWidth={ITEM_WIDTH}
-                />
+                <TouchableOpacity onPress={() => { navigation.navigate("RestaurantView") }}>
+                    <CarouselComp
+                        layout='default'
+                        layoutCardOffset={7}
+                        ref={isCarousel}
+                        data={dealsData}
+                        renderItem={CarouselItem}
+                        sliderWidth={SLIDER_WIDTH}
+                        itemWidth={ITEM_WIDTH}
+                    />
+                </TouchableOpacity>
+
             </View>
             <View style={{ marginBottom: 15, flexDirection: "row", paddingHorizontal: 15, justifyContent: "space-between" }} >
                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>Recommended for you</Text>
@@ -117,7 +120,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: -9, height: 13 },
         shadowOpacity: 0.13,
         shadowRadius: 20,
-       
+
     },
     image: {
         height: 55,
