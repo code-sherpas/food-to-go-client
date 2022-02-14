@@ -9,7 +9,7 @@ const response = {
           "id": "2ef65b3b-8f4e-4288-8b58-998cb6bdab46",
           "profile_url": "https://i.ibb.co/tQbckTt/food.jpg",
           "addres": "Nehru Cross, No. 253/123, Nadan Mahal Rd, Kundari Rakabganj, Lucknow, Uttar Pradesh 226004, India",
-          "name": "Bajpai Kachori Bhandar Rakab ganj wale"
+          "name": "Restaurante Gresca"
         },
         "pack": {
           "id": "2ef65b3b-8f4e-4288-8b58-998cb6bdab48",

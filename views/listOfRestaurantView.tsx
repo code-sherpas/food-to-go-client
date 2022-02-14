@@ -26,7 +26,7 @@ export default function ListOfRestaurantView() {
 
     return (<>
         <View style={styles.container}>
-            <View style={{ paddingVertical: 15, paddingHorizontal: 15 }}>
+            <View style={{ paddingTop: 45, paddingHorizontal: 15, marginBottom: 15 }}>
                 <Text style={styles.heading}>Discover</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 15 }}>
@@ -63,7 +63,7 @@ export default function ListOfRestaurantView() {
                     itemWidth={ITEM_WIDTH}
                 />
             </View>
-            <View style={{ marginBottom: 30, flexDirection: "row", paddingHorizontal: 15, paddingTop: 15, justifyContent: "space-between" }} >
+            <View style={{ marginBottom: 15, flexDirection: "row", paddingHorizontal: 15, justifyContent: "space-between" }} >
                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>Recommended for you</Text>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: 7 }}>See all</Text>
@@ -87,7 +87,7 @@ export default function ListOfRestaurantView() {
                         <Icon name="times" style={{ marginRight: 15, marginTop: 15 }} />
                     </View>
                     <View style={{ flexDirection: "row", justifyContent: "space-around", marginVertical: 30 }}>
-                        <Text style={{ fontWeight: "bold", fontSize: 20 }}>{`How does \nToo Good To Go \nwork`}</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 15 }}>{`How does \nToo Good To Go \nwork`}</Text>
                         <Image style={styles.image} source={{ uri: "https://tgtg-mkt-cms-prod.s3.eu-west-1.amazonaws.com/13508/TGTG_Icon_2000x1666px_RGB-%281%29.png" }} />
                     </View>
                     <View>
@@ -117,10 +117,10 @@ const styles = StyleSheet.create({
         shadowOffset: { width: -9, height: 13 },
         shadowOpacity: 0.13,
         shadowRadius: 20,
-        marginBottom: 30
+       
     },
     image: {
-        height: 52,
-        width: 64
+        height: 55,
+        width: 66
     }
 })
