@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, Dimensions } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
 import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/CarouselItem';
@@ -26,14 +26,14 @@ export default function ListOfRestaurantView() {
 
     return (<>
         <View style={styles.container}>
-            <View style={{ paddingVertical: '5%', paddingHorizontal: '5%' }}>
+            <View style={{ paddingVertical: 15, paddingHorizontal: 15 }}>
                 <Text style={styles.heading}>Discover</Text>
             </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: "5%" }}>
+            <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 15 }}>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Icon name="location-arrow" color="#114D4D" />
-                    <View style={{ marginLeft: "0.5rem" }}>
-                        <Text style={{ color: "#114D4D", fontWeight: "900" }}>{locationData.place}</Text>
+                    <View style={{ marginLeft: 15 }}>
+                        <Text style={{ color: "#114D4D", fontWeight: "bold" }}>{locationData.place}</Text>
                         <Text style={{ color: "#114D4D" }} >{locationData.distance}</Text>
                     </View>
                 </View>
@@ -45,10 +45,10 @@ export default function ListOfRestaurantView() {
                     />
                 </View>
             </View>
-            <View style={{ marginBottom: "1rem", flexDirection: "row", paddingHorizontal: "5%", paddingTop: "5%", justifyContent: "space-between" }} >
-                <Text style={{ fontWeight: "900", fontSize: "20px" }}>Save before it's too late</Text>
-                <View style={{ flexDirection: "row", height: "fit-content", alignItems: "center" }}>
-                    <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: "0.25rem" }}>See all</Text>
+            <View style={{ marginBottom: 15, flexDirection: "row", paddingHorizontal: 15, paddingTop: 15, justifyContent: "space-between" }} >
+                <Text style={{ fontWeight: "bold", fontSize: 20 }}>Save before it's too late</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: 7 }}>See all</Text>
                     <Icon name="chevron-right" color="#114D4D" />
                 </View>
             </View>
@@ -63,10 +63,10 @@ export default function ListOfRestaurantView() {
                     itemWidth={ITEM_WIDTH}
                 />
             </View>
-            <View style={{ marginBottom: "1rem", flexDirection: "row", paddingHorizontal: "5%", paddingTop: "5%", justifyContent: "space-between" }} >
-                <Text style={{ fontWeight: "900", fontSize: "20px" }}>Recommended for you</Text>
-                <View style={{ flexDirection: "row", height: "fit-content", alignItems: "center" }}>
-                    <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: "0.25rem" }}>See all</Text>
+            <View style={{ marginBottom: 30, flexDirection: "row", paddingHorizontal: 15, paddingTop: 15, justifyContent: "space-between" }} >
+                <Text style={{ fontWeight: "bold", fontSize: 20 }}>Recommended for you</Text>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: 7 }}>See all</Text>
                     <Icon name="chevron-right" color="#114D4D" />
                 </View>
             </View>
@@ -84,10 +84,10 @@ export default function ListOfRestaurantView() {
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
                 <View style={styles.modal}>
                     <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-                        <Icon name="times" style={{ marginRight: "1rem", marginTop: "1rem" }} />
+                        <Icon name="times" style={{ marginRight: 15, marginTop: 15 }} />
                     </View>
-                    <View style={{ flexDirection: "row", justifyContent: "space-around", marginVertical: "2rem" }}>
-                        <Text style={{ fontWeight: "900", fontSize: "20px" }}>How does <br />Too Good To Go <br />work</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", marginVertical: 30 }}>
+                        <Text style={{ fontWeight: "bold", fontSize: 20 }}>{`How does \nToo Good To Go \nwork`}</Text>
                         <Image style={styles.image} source={{ uri: "https://tgtg-mkt-cms-prod.s3.eu-west-1.amazonaws.com/13508/TGTG_Icon_2000x1666px_RGB-%281%29.png" }} />
                     </View>
                     <View>
@@ -107,20 +107,20 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 30,
-        fontWeight: "900"
+        fontWeight: "bold"
     },
     modal: {
         borderRadius: 8,
-        width: "20rem",
+        width: 320,
         elevation: 5,
         shadowColor: '#000',
         shadowOffset: { width: -9, height: 13 },
         shadowOpacity: 0.13,
         shadowRadius: 20,
-        marginBottom: "2rem"
+        marginBottom: 30
     },
     image: {
-        height: "3.25rem",
-        width: "4rem"
+        height: 52,
+        width: 64
     }
 })
