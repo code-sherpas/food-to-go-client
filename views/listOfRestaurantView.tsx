@@ -74,15 +74,20 @@ export default function ListOfRestaurantView({ navigation }) {
                 </View>
             </View>
             <View style={{ alignContent: "center" }}>
-                <CarouselComp
-                    layout='default'
-                    layoutCardOffset={7}
-                    ref={isCarousel}
-                    data={recommendedData}
-                    renderItem={CarouselItem}
-                    sliderWidth={SLIDER_WIDTH}
-                    itemWidth={ITEM_WIDTH}
-                />
+
+                <TouchableOpacity onPress={() => { navigation.navigate("RestaurantView") }}>
+                    <CarouselComp
+                        layout='default'
+                        layoutCardOffset={7}
+                        ref={isCarousel}
+                        data={recommendedData}
+                        renderItem={CarouselItem}
+                        sliderWidth={SLIDER_WIDTH}
+                        itemWidth={ITEM_WIDTH}
+                    />
+                </TouchableOpacity>
+
+
             </View>
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
                 <View style={styles.modal}>
