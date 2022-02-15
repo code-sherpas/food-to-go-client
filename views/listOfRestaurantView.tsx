@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Button, Image, Dimensions, TouchableOpacity, Pressable, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
 import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH, Item } from '../components/CarouselItem';
@@ -8,7 +8,7 @@ import { RootState } from '../redux/store';
 import { fetchDeals, fetchLocation, fetchRecommended } from '../redux/slices/listOfRestaurantViewSlice';
 
 
-export default function ListOfRestaurantView({navigation}) {
+export default function ListOfRestaurantView({ navigation }: { navigation: any }) {
     const dispatch = useDispatch();
     const dealsData = useSelector((state: RootState) => state.listView.deals);
     const locationData = useSelector((state: RootState) => state.listView.location);
@@ -55,15 +55,15 @@ export default function ListOfRestaurantView({navigation}) {
                 </View>
             </View>
             <View style={{ alignContent: "center" }}>
-                    <CarouselComp
-                        layout='default'
-                        layoutCardOffset={7}
-                        ref={isCarousel}
-                        data={dealsData}
-                        renderItem={({item, index}) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
-                        sliderWidth={SLIDER_WIDTH}
-                        itemWidth={ITEM_WIDTH}
-                    />
+                <CarouselComp
+                    layout='default'
+                    layoutCardOffset={7}
+                    ref={isCarousel}
+                    data={dealsData}
+                    renderItem={({ item, index }) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
+                    sliderWidth={SLIDER_WIDTH}
+                    itemWidth={ITEM_WIDTH}
+                />
 
             </View>
             <View style={{ marginBottom: 15, flexDirection: "row", paddingHorizontal: 15, justifyContent: "space-between" }} >
@@ -75,15 +75,15 @@ export default function ListOfRestaurantView({navigation}) {
             </View>
             <View style={{ alignContent: "center" }}>
 
-                    <CarouselComp
-                        layout='default'
-                        layoutCardOffset={7}
-                        ref={isCarousel}
-                        data={recommendedData}
-                        renderItem={({item, index}) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
-                        sliderWidth={SLIDER_WIDTH}
-                        itemWidth={ITEM_WIDTH}
-                    />
+                <CarouselComp
+                    layout='default'
+                    layoutCardOffset={7}
+                    ref={isCarousel}
+                    data={recommendedData}
+                    renderItem={({ item, index }) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
+                    sliderWidth={SLIDER_WIDTH}
+                    itemWidth={ITEM_WIDTH}
+                />
 
 
             </View>
