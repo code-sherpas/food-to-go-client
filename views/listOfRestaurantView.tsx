@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Button, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, Dimensions, TouchableOpacity, Pressable, TouchableWithoutFeedback } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
-import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/CarouselItem';
+import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH, Item } from '../components/CarouselItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { fetchDeals, fetchLocation, fetchRecommended } from '../redux/slices/listOfRestaurantViewSlice';
 
 
-export default function ListOfRestaurantView({ navigation }) {
+export default function ListOfRestaurantView({navigation}) {
     const dispatch = useDispatch();
     const dealsData = useSelector((state: RootState) => state.listView.deals);
     const locationData = useSelector((state: RootState) => state.listView.location);
@@ -21,6 +21,8 @@ export default function ListOfRestaurantView({ navigation }) {
     useEffect(() => {
         getListView();
     }, [dispatch])
+
+    console.log(navigation)
 
     const isCarousel = useRef(null);
 
@@ -53,17 +55,15 @@ export default function ListOfRestaurantView({ navigation }) {
                 </View>
             </View>
             <View style={{ alignContent: "center" }}>
-                <TouchableOpacity onPress={() => { navigation.navigate("RestaurantView") }}>
                     <CarouselComp
                         layout='default'
                         layoutCardOffset={7}
                         ref={isCarousel}
                         data={dealsData}
-                        renderItem={CarouselItem}
+                        renderItem={({item, index}) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
                         sliderWidth={SLIDER_WIDTH}
                         itemWidth={ITEM_WIDTH}
                     />
-                </TouchableOpacity>
 
             </View>
             <View style={{ marginBottom: 15, flexDirection: "row", paddingHorizontal: 15, justifyContent: "space-between" }} >
@@ -75,17 +75,15 @@ export default function ListOfRestaurantView({ navigation }) {
             </View>
             <View style={{ alignContent: "center" }}>
 
-                <TouchableOpacity onPress={() => { navigation.navigate("RestaurantView") }}>
                     <CarouselComp
                         layout='default'
                         layoutCardOffset={7}
                         ref={isCarousel}
                         data={recommendedData}
-                        renderItem={CarouselItem}
+                        renderItem={({item, index}) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
                         sliderWidth={SLIDER_WIDTH}
                         itemWidth={ITEM_WIDTH}
                     />
-                </TouchableOpacity>
 
 
             </View>
