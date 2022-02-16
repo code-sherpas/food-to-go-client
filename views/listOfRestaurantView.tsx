@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Button, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CarouselComp from 'react-native-snap-carousel';
-import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH } from '../components/CarouselItem';
+import CarouselItem, { SLIDER_WIDTH, ITEM_WIDTH, Item } from '../components/CarouselItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { fetchDeals, fetchLocation, fetchRecommended } from '../redux/slices/listOfRestaurantViewSlice';
 
 
-export default function ListOfRestaurantView() {
+export default function ListOfRestaurantView({ navigation }: { navigation: any }) {
     const dispatch = useDispatch();
     const dealsData = useSelector((state: RootState) => state.listView.deals);
     const locationData = useSelector((state: RootState) => state.listView.location);
@@ -22,11 +22,13 @@ export default function ListOfRestaurantView() {
         getListView();
     }, [dispatch])
 
+
+
     const isCarousel = useRef(null);
 
     return (<>
         <View style={styles.container}>
-            <View style={{ paddingVertical: 15, paddingHorizontal: 15 }}>
+            <View style={{ paddingTop: 45, paddingHorizontal: 15, marginBottom: 15 }}>
                 <Text style={styles.heading}>Discover</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between", paddingHorizontal: 15 }}>
@@ -58,12 +60,13 @@ export default function ListOfRestaurantView() {
                     layoutCardOffset={7}
                     ref={isCarousel}
                     data={dealsData}
-                    renderItem={CarouselItem}
+                    renderItem={({ item, index }) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
                     sliderWidth={SLIDER_WIDTH}
                     itemWidth={ITEM_WIDTH}
                 />
+
             </View>
-            <View style={{ marginBottom: 30, flexDirection: "row", paddingHorizontal: 15, paddingTop: 15, justifyContent: "space-between" }} >
+            <View style={{ marginBottom: 15, flexDirection: "row", paddingHorizontal: 15, paddingTop: 15, justifyContent: "space-between" }} >
                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>Recommended for you</Text>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Text style={{ color: "#114D4D", fontWeight: "bold", marginRight: 7 }}>See all</Text>
@@ -71,15 +74,18 @@ export default function ListOfRestaurantView() {
                 </View>
             </View>
             <View style={{ alignContent: "center" }}>
+
                 <CarouselComp
                     layout='default'
                     layoutCardOffset={7}
                     ref={isCarousel}
                     data={recommendedData}
-                    renderItem={CarouselItem}
+                    renderItem={({ item, index }) => <CarouselItem item={item as Item} index={index} navigation={navigation} />}
                     sliderWidth={SLIDER_WIDTH}
                     itemWidth={ITEM_WIDTH}
                 />
+
+
             </View>
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
                 <View style={styles.modal}>
@@ -117,10 +123,10 @@ const styles = StyleSheet.create({
         shadowOffset: { width: -9, height: 13 },
         shadowOpacity: 0.13,
         shadowRadius: 20,
-        marginBottom: 30
+
     },
     image: {
-        height: 52,
-        width: 64
+        height: 55,
+        width: 66
     }
 })

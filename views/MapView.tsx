@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Button, Dimensions, Platform } from 'react-native';
-import Icon from "react-native-vector-icons/FontAwesome5";
 import MapView, { Marker } from 'react-native-maps';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StyleSheet, View, ImageBackground, Text, Image, Button, ScrollView } from "react-native";
+import { StyleSheet, View, ImageBackground, Text, ScrollView, Dimensions, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { RootState } from "../redux/store";
 import { fetchRestaurantDetails } from "../redux/slices/restaurantSlice";
@@ -9,17 +9,21 @@ export default function RestaurantSlice() {
   const dispatch = useDispatch();
   const restaurant = useSelector((state: RootState) => state.restaurant);
 
+  const dimensions = Dimensions.get('window');
+  const imageHeight = Math.round(dimensions.height * 4 / 16);
+  const width = dimensions.width;
+
   function displayRestaurantBanner() {
     return (
       <>
-        <View style={{ height: "40%" }}>
+        <View style={{ height: imageHeight }}>
           <ImageBackground
             source={{
               uri: restaurant.restaurant.attributes.store.banner_url,
             }}
             style={{
-              width: "100%",
-              height: "100%",
+              width: width,
+              height: Math.round(dimensions.height * 4 / 16),
               display: "flex",
               justifyContent: "flex-end",
             }}
@@ -105,7 +109,7 @@ export default function RestaurantSlice() {
           style={{
             display: "flex",
             justifyContent: "center",
-            height: 25,
+            height: 35,
             padding: 5,
             backgroundColor: "#FE7376",
             alignItems: "center",
@@ -193,7 +197,7 @@ export default function RestaurantSlice() {
           <View
             style={{
               width: 150,
-              height: 25,
+              height: 35,
               padding: 5,
               backgroundColor: "#BDE1DD",
               borderRadius: 3,
@@ -283,24 +287,26 @@ export default function RestaurantSlice() {
     )
   }
 
-  function reserveButton(){
-      return(
-        <>
+  function reserveButton() {
+    return (
+      <>
         <View style={styles.reserve}>
-          <View style={{backgroundColor: "#114D4D", height: "3rem", width: "90%", padding: "1rem", borderRadius: "3rem" }}>
-            <Text style={{color: "white", textAlign: "center", fontSize: "15px", zIndex: 69}}>
-            Reserve
+          <TouchableOpacity>
+            <View style={{ backgroundColor: "#114D4D", height: 55, width: Math.round(dimensions.width * 14 / 16), padding: 16, borderRadius: 48 }}>
+              <Text style={{ color: "white", textAlign: "center", fontSize: 15, zIndex: 69 }}>
+                Reserve
               </Text>
-          </View>
+            </View>
+          </TouchableOpacity>
         </View>
-        </>
-      )
+      </>
+    )
   }
 
-  function opaqueBackground(){
-    return(
+  function opaqueBackground() {
+    return (
       <>
-      <View style={styles.opaque}/>
+        <View style={styles.opaque} />
       </>
     )
   }
@@ -321,26 +327,22 @@ export default function RestaurantSlice() {
     <>
       {restaurant.restaurant.attributes ? (
         <>
-        <ScrollView
-          style={styles.container}
-        >
-          
-          {displayRestaurantBanner()}
-          {displayRestaurantNameAndRating()}
-          {displayTime()}
-          {displaySaleBanner()}
-          {displayRestaurantAddress()}
-          {displayFoodItems()}
-          {displayIngredeintsAndAllergens()}
-          {displayRatingAtBottom()}
-          {displayRatingAtBottom()}
-          {displayRatingAtBottom()}
-          {displayRatingAtBottom()}
+          <ScrollView
+            style={styles.container}
+          >
 
-        </ScrollView>
-        {opaqueBackground()}
-        {reserveButton()}
-      </>
+            {displayRestaurantBanner()}
+            {displayRestaurantNameAndRating()}
+            {displayTime()}
+            {displaySaleBanner()}
+            {displayRestaurantAddress()}
+            {displayFoodItems()}
+            {displayIngredeintsAndAllergens()}
+            {displayRatingAtBottom()}
+          </ScrollView>
+          {opaqueBackground()}
+          {reserveButton()}
+        </>
       ) : (
         <></>
       )}
@@ -357,11 +359,13 @@ const styles = StyleSheet.create({
   bottomRating: {
     padding: 20,
     flex: 1,
-    marginTop: "2rem",
+    marginTop: 32,
     display: "flex",
-    textAlign: "center",
     flexDirection: "column",
-    justifyContent: "center",
+    borderBottomColor: "#DCE0E1",
+    borderStyle: "solid",
+    borderBottomWidth: 2,
+    alignItems: "center",
   },
   icon: {
     padding: 20,
@@ -380,23 +384,23 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
-    minHeight: "100%"
+    minHeight: Dimensions.get('window').height,
 
   },
   reserve: {
-    marginTop: "185%",
+    marginTop: Math.round(Dimensions.get('window').height * 0.925),
     position: "absolute",
-    width: "100%",
+    width: Dimensions.get('window').width,
     alignItems: "center",
-  }, 
-  opaque:{
-        opacity: 0.8,
-        marginTop: "170%",
-        position: "absolute",
-        height: "10rem",
-        width: "100%",
-        backgroundColor: "white",
-        alignItems: "center",
+  },
+  opaque: {
+    opacity: 0.8,
+    marginTop: Math.round(Dimensions.get('window').height * 0.85),
+    position: "absolute",
+    height: 180,
+    width: Dimensions.get('window').width,
+    backgroundColor: "white",
+    alignItems: "center",
   }
 });
 function useParams(): { restId: any } {
