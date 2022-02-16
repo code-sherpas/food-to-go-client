@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StyleSheet, View, ImageBackground, Text, ScrollView, Dimensions } from "react-native";
+import { StyleSheet, View, ImageBackground, Text, ScrollView, Dimensions, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { RootState } from "../redux/store";
 import { fetchRestaurantDetails } from "../redux/slices/restaurantSlice";
@@ -291,11 +291,13 @@ export default function RestaurantSlice() {
     return (
       <>
         <View style={styles.reserve}>
-          <View style={{ backgroundColor: "#114D4D", height: 55, width: Math.round(dimensions.width * 14 / 16), padding: 16, borderRadius: 48 }}>
-            <Text style={{ color: "white", textAlign: "center", fontSize: 15, zIndex: 69 }}>
-              Reserve
-            </Text>
-          </View>
+          <TouchableOpacity>
+            <View style={{ backgroundColor: "#114D4D", height: 55, width: Math.round(dimensions.width * 14 / 16), padding: 16, borderRadius: 48 }}>
+              <Text style={{ color: "white", textAlign: "center", fontSize: 15, zIndex: 69 }}>
+                Reserve
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </>
     )
@@ -337,10 +339,6 @@ export default function RestaurantSlice() {
             {displayFoodItems()}
             {displayIngredeintsAndAllergens()}
             {displayRatingAtBottom()}
-            {displayRatingAtBottom()}
-            {displayRatingAtBottom()}
-            {displayRatingAtBottom()}
-
           </ScrollView>
           {opaqueBackground()}
           {reserveButton()}
@@ -363,9 +361,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 32,
     display: "flex",
-    textAlign: "center",
     flexDirection: "column",
-    justifyContent: "center",
+    borderBottomColor: "#DCE0E1",
+    borderStyle: "solid",
+    borderBottomWidth: 2,
+    alignItems: "center",
   },
   icon: {
     padding: 20,
